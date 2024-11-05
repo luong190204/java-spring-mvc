@@ -33,22 +33,21 @@ public class UserController {
         return "index";
     }
 
-    @RequestMapping("/admin/create")
+    @RequestMapping("/admin/user/create") // GET
     public String getUserPage(Model model) {
         model.addAttribute("newUser", new User());
         return "admin/user/create";
     }
 
     @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
-    public String createUser(Model model, @ModelAttribute("newUser") User user) {
-        System.out.println("run here: " + user);
+    public String createUserPage(Model model, @ModelAttribute("newUser") User user) {
         userService.createUser(user);
         return "index";
     }
 
-    // @RequestMapping(value = "/admin/users", method = RequestMethod.POST)
-    // public String getAllUsers(Model model) {
-    // model.addAttribute("users", userService.getAllUsers());
-    // return "admin/user/getAll";
-    // }
+    @RequestMapping("/admin/user")
+    public String getAllUsers(Model model) {
+        model.addAttribute("users", userService.getAllUsers());
+        return "admin/user/table-user";
+    }
 }
