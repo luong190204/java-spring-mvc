@@ -51,7 +51,7 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-primary btn-block">Create</button>
-
+                                <a href="/admin/user">Danh sách</a>
                             </form:form>
                         </section>
                     </section>
