@@ -7,7 +7,7 @@
 
             <head>
                 <meta charset="UTF-8">
-                <title>User detail ${id}</title>
+                <title>Delete with ${id}</title>
                 <!-- latest compiled and minified cs -->
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
                     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
@@ -28,28 +28,26 @@
                     <div class="row">
                         <div class="col-12 mx-auto">
                             <div class="d-flex justify-content-between">
-                                <h3>User detail with id= ${id}</h3>
+                                <h3>Delete the user with id= ${id}</h3>
 
                             </div>
 
                             <hr />
 
-                            <div class="card" style="width: 60%;">
-                                <div class="card-header">
-                                    User information
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Id: ${user1.id}</li>
-                                    <li class="list-group-item">Email: ${user1.email}</li>
-                                    <li class="list-group-item">FullName: ${user1.fullname}</li>
-                                    <li class="list-group-item">Address: ${user1.address}</li>
-                                    <li class="list-group-item">Phone: ${user1.phone}</li>
-                                </ul>
+                            <div class="alert alert-danger" role="alert">
+                                Are you sure to delete this user?
                             </div>
 
-                            <a href="/admin/user" class="btn btn-primary mt-3">
-                                Back
-                            </a>
+                            <form:form method="post" modelAttribute="newUser" action="/admin/user/delete">
+
+                                <div class="form-group" style="display: none;">
+                                    <label for="Inputuser1">Id</label>
+                                    <form:input type="text" value="${id}" class="form-control" path="id"
+                                        placeholder="id" />
+                                </div>
+
+                                <button class="btn btn-danger">Confirm</button>
+                            </form:form>
 
                         </div>
                     </div>

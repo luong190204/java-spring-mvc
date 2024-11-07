@@ -1,5 +1,6 @@
 package vn.hoidanit.laptopshop.service;
 
+import org.eclipse.tags.shaded.org.apache.regexp.recompile;
 import org.springframework.stereotype.Service;
 
 import vn.hoidanit.laptopshop.domain.User;
@@ -24,11 +25,15 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public User createUser(User user) {
+    public User getUserById(long id) {
+        return userRepository.findById(id);
+    }
+
+    public User handleSaveUser(User user) {
         return userRepository.save(user);
     }
 
-    public User getUserById(long id) {
-        return userRepository.findById(id).orElse(null);
+    public void deleteUser(long id) {
+        userRepository.deleteById(id);
     }
 }
