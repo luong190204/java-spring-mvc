@@ -33,7 +33,7 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    // Order
+    // user one => to many order
     @OneToMany(mappedBy = "user")
     List<Order> orders;
 
