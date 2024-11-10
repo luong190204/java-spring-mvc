@@ -1,4 +1,4 @@
-package vn.hoidanit.laptopshop.controller;
+package vn.hoidanit.laptopshop.controller.admin;
 
 import org.eclipse.tags.shaded.org.apache.regexp.recompile;
 import org.springframework.stereotype.Controller;
@@ -51,16 +51,16 @@ public class UserController {
     public String getUsersPage(Model model) {
         List<User> users = userService.getAllUsers();
         model.addAttribute("users1", users);
-        return "admin/user/table-user";
+        return "admin/user/show";
     }
 
     @RequestMapping("/admin/user/{id}")
-    public String getUserById(@PathVariable long id, Model model) {
+    public String getUserDetailPage(@PathVariable long id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user1", user);
         model.addAttribute("id", id);
 
-        return "admin/user/show";
+        return "admin/user/detail";
     }
 
     @RequestMapping("/admin/user/update/{id}")
