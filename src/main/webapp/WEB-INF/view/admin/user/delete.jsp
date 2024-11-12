@@ -65,7 +65,7 @@
                                                         placeholder="id" />
                                                 </div>
 
-                                                <button class="btn btn-danger">Confirm</button>
+                                                <a href="/admin/user" class="btn btn-danger">Confirm</a>
                                             </form:form>
 
                                         </div>

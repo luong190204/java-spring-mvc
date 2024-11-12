@@ -17,10 +17,19 @@
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
                     crossorigin="anonymous"></script>
-
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(() => {
+                        const avatarFile = $("#avatarFile");
+                        avatarFile.change(function (e) {
+                            const imgURL = URL.createObjectURL(e.target.files[0]);
+                            $("#avatarPreview").attr("src", imgURL);
+                            $("#avatarPreview").css({ "display": "block" });
+                        });
+                    });
+                </script>
             </head>
 
             <body class="sb-nav-fixed">
@@ -38,57 +47,77 @@
                                 <h1 class="mt-4">Manage Create</h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Create</li>
+                                    <li class="breadcrumb-item active">Create user</li>
                                 </ol>
 
                                 <!--Login form starts-->
-                                <section class="container-fluid mt-5">
-                                    <section class="row justify-content-center">
-                                        <section class="col-12 col-sm-6 col-md-6">
-                                            <form:form class="form-container" action="/admin/user/create" method="post"
-                                                modelAttribute="newUser">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <h3 class="font-weight-bold mb-3"> Create a user </h3>
+                                    </div>
+                                    <form:form class="row" action="/admin/user/create" method="post"
+                                        modelAttribute="newUser">
 
-                                                <div class="form-group mb-3">
-                                                    <h4 class="text-center font-weight-bold"> Create a user </h4>
-                                                    <label for="Inputuser1">Email</label>
-                                                    <form:input type="text" class="form-control" path="email"
-                                                        aria-describeby="Email" placeholder="Email" />
-                                                </div>
-                                                <!--Binding the label and input together-->
-                                                <div class="form-group mb-3">
-                                                    <label for="InputPassword1">Password</label>
-                                                    <form:input type="password" class="form-control" path="password"
-                                                        placeholder="Password" />
-                                                </div>
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label">Email</label>
+                                            <form:input type="text" class="form-control" path="email"
+                                                placeholder="Email" />
+                                        </div>
+                                        <!--Binding the label and input together-->
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label">Password</label>
+                                            <form:input type="password" class="form-control" path="password"
+                                                placeholder="Password" />
+                                        </div>
 
-                                                <div class="form-group mb-3">
-                                                    <label for="InputPassword1">fullName</label>
-                                                    <form:input type="text" class="form-control" path="fullname"
-                                                        placeholder="fullName" />
-                                                </div>
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label">Phone</label>
+                                            <form:input type="text" class="form-control" path="phone"
+                                                placeholder="Phone" />
+                                        </div>
 
-                                                <div class="form-group mb-3">
-                                                    <label for="InputPassword1">Address</label>
-                                                    <form:input type="text" class="form-control" path="address"
-                                                        placeholder="Address" />
-                                                </div>
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label">fullName</label>
+                                            <form:input type="text" class="form-control" path="fullname"
+                                                placeholder="fullName" />
+                                        </div>
 
-                                                <div class="form-group mb-3">
-                                                    <label for="InputPassword1">Phone</label>
-                                                    <form:input type="text" class="form-control" path="phone"
-                                                        placeholder="Phone" />
-                                                </div>
+                                        <div class="mb-3 col-12 col-md-12">
+                                            <label class="form-label">Address</label>
+                                            <form:input type="text" class="form-control" path="address"
+                                                placeholder="Address" />
+                                        </div>
 
-                                                <button type="submit"
-                                                    class="btn btn-primary btn-block mt-3">Create</button>
-                                                <div>
-                                                    <a href="/admin/user">Danh sách</a>
-                                                </div>
-                                            </form:form>
-                                        </section>
-                                    </section>
-                                </section>
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label class="form-label">ROLE: </label>
+                                            <select class="form-select">
+                                                <option value="ADMIN">ADMIN</option>
+                                                <option value="USER">USER</option>
+                                            </select>
+                                        </div>
 
+                                        <div class="mb-3 col-12 col-md-6">
+                                            <label for="avatarFile" class="form-label">Avatar: </label>
+                                            <input type="file" class="form-control" id="avatarFile"
+                                                accept=".png, .jpg, .jpeg">
+                                        </div>
+
+                                        <div class="mb-3 col-12 col-md-3">
+                                            <img alt="avatar preview" style="max-height: 250px; display: none;"
+                                                id="avatarPreview">
+                                        </div>
+
+
+                                        <div class="mb-3 col-12">
+                                            <button type="submit" class="btn btn-primary btn-block mt-3">Create</button>
+                                        </div>
+                                        <div>
+                                            <a href="/admin/user">Danh sách</a>
+                                        </div>
+                                    </form:form>
+                                </div>
+
+                            </div>
                         </main>
                         <!-- footer -->
                         <jsp:include page="../layout/footer.jsp" />
