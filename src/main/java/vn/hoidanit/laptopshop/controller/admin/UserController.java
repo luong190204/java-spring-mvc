@@ -54,10 +54,10 @@ public class UserController {
             @RequestParam("dinhluongitFile") MultipartFile file) {
 
         String avatar = this.uploadService.handSaveUploadFile(file, "avatar");
-        String hassPassWord = this.passwordEncoder.encode(user.getPassword());
+        String hashPassWord = this.passwordEncoder.encode(user.getPassword());
 
         user.setAvatar(avatar);
-        user.setPassword(hassPassWord);
+        user.setPassword(hashPassWord);
         user.setRole(this.userService.getRoleByName(user.getRole().getName()));
 
         this.userService.handleSaveUser(user);

@@ -21,6 +21,7 @@ public class UploadService {
 
     public String handSaveUploadFile(MultipartFile file, String targetFolder) {
         // Relation path : Absolute path
+        // Lấy ra đường dẫn tới thư mục
         String rootPath = this.servletContext.getRealPath("/resources/images");
         String finalName = "";
         try {
