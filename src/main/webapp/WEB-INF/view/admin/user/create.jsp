@@ -51,72 +51,93 @@
                                 </ol>
 
                                 <!--Login form starts-->
-                                <div class="row">
-                                    <div class="col-12 col-md-6">
-                                        <h3 class="font-weight-bold mb-3"> Create a user </h3>
+                                <div class="mt-5">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6 mx-auto">
+                                            <h3 class="font-weight-bold mb-3"> Create a user </h3>
+                                            <hr />
+                                            <form:form class="row" action="/admin/user/create" method="post"
+                                                modelAttribute="newUser" enctype="multipart/form-data">
+
+                                                <div class="mb-3 col-12 col-md-6">
+                                                    <c:set var="errorsEmail">
+                                                        <form:errors path="email" cssClass="invalid-feedback" />
+                                                    </c:set>
+
+                                                    <label class="form-label">Email</label>
+                                                    <form:input type="text"
+                                                        class="form-control ${not empty errorsEmail ? 'is-invalid' : ''}"
+                                                        path="email" placeholder="Email" />
+
+                                                    ${errorsEmail}
+                                                </div>
+                                                <!--Binding the label and input together-->
+                                                <div class="mb-3 col-12 col-md-6">
+                                                    <c:set var="errorsPassword">
+                                                        <form:errors path="password" />
+                                                    </c:set>
+                                                    <label class="form-label">Password</label>
+                                                    <form:input type="password"
+                                                        class="form-control ${not empty errorsPassword ? 'is-invalid' : ''}"
+                                                        path="password" placeholder="Password" />
+                                                    <form:errors cssClass="invalid-feedback" path="password" />
+                                                </div>
+
+                                                <div class="mb-3 col-12 col-md-6">
+                                                    <label class="form-label">Phone</label>
+                                                    <form:input type="text" class="form-control" path="phone"
+                                                        placeholder="Phone" />
+                                                </div>
+
+                                                <div class="mb-3 col-12 col-md-6">
+                                                    <c:set var="errorsFullname">
+                                                        <form:errors path="fullname" />
+                                                    </c:set>
+
+                                                    <label class="form-label">fullName</label>
+                                                    <form:input type="text"
+                                                        class="form-control ${not empty errorsFullname ? 'is-invalid' : ''}"
+                                                        path="fullname" placeholder="fullName" />
+                                                    <form:errors class="invalid-feedback" path="fullname" />
+                                                </div>
+
+                                                <div class="mb-3 col-12 col-md-12">
+                                                    <label class="form-label">Address</label>
+                                                    <form:input type="text" class="form-control" path="address"
+                                                        placeholder="Address" />
+                                                </div>
+
+                                                <div class="mb-3 col-12 col-md-6">
+                                                    <label class="form-label">ROLE: </label>
+                                                    <form:select class="form-select" path="role.name">
+                                                        <form:option value="ADMIN">ADMIN</form:option>
+                                                        <form:option value="USER">USER</form:option>
+                                                    </form:select>
+                                                </div>
+
+                                                <div class="mb-3 col-12 col-md-6">
+                                                    <label for="avatarFile" class="form-label">Avatar: </label>
+                                                    <input type="file" class="form-control" id="avatarFile"
+                                                        accept=".png, .jpg, .jpeg" name="dinhluongitFile">
+                                                </div>
+
+                                                <div class="mb-3 col-12 col-md-3">
+                                                    <img alt="avatar preview" style="max-height: 250px; display: none;"
+                                                        id="avatarPreview">
+                                                </div>
+
+
+                                                <div class="mb-3 col-12">
+                                                    <button type="submit"
+                                                        class="btn btn-primary btn-block mt-3">Create</button>
+                                                </div>
+                                                <div>
+                                                    <a href="/admin/user">Danh sách</a>
+                                                </div>
+                                            </form:form>
+                                        </div>
                                     </div>
-                                    <form:form class="row" action="/admin/user/create" method="post"
-                                        modelAttribute="newUser" enctype="multipart/form-data">
-
-                                        <div class="mb-3 col-12 col-md-6">
-                                            <label class="form-label">Email</label>
-                                            <form:input type="text" class="form-control" path="email"
-                                                placeholder="Email" />
-                                        </div>
-                                        <!--Binding the label and input together-->
-                                        <div class="mb-3 col-12 col-md-6">
-                                            <label class="form-label">Password</label>
-                                            <form:input type="password" class="form-control" path="password"
-                                                placeholder="Password" />
-                                        </div>
-
-                                        <div class="mb-3 col-12 col-md-6">
-                                            <label class="form-label">Phone</label>
-                                            <form:input type="text" class="form-control" path="phone"
-                                                placeholder="Phone" />
-                                        </div>
-
-                                        <div class="mb-3 col-12 col-md-6">
-                                            <label class="form-label">fullName</label>
-                                            <form:input type="text" class="form-control" path="fullname"
-                                                placeholder="fullName" />
-                                        </div>
-
-                                        <div class="mb-3 col-12 col-md-12">
-                                            <label class="form-label">Address</label>
-                                            <form:input type="text" class="form-control" path="address"
-                                                placeholder="Address" />
-                                        </div>
-
-                                        <div class="mb-3 col-12 col-md-6">
-                                            <label class="form-label">ROLE: </label>
-                                            <form:select class="form-select" path="role.name">
-                                                <form:option value="ADMIN">ADMIN</form:option>
-                                                <form:option value="USER">USER</form:option>
-                                            </form:select>
-                                        </div>
-
-                                        <div class="mb-3 col-12 col-md-6">
-                                            <label for="avatarFile" class="form-label">Avatar: </label>
-                                            <input type="file" class="form-control" id="avatarFile"
-                                                accept=".png, .jpg, .jpeg" name="dinhluongitFile">
-                                        </div>
-
-                                        <div class="mb-3 col-12 col-md-3">
-                                            <img alt="avatar preview" style="max-height: 250px; display: none;"
-                                                id="avatarPreview">
-                                        </div>
-
-
-                                        <div class="mb-3 col-12">
-                                            <button type="submit" class="btn btn-primary btn-block mt-3">Create</button>
-                                        </div>
-                                        <div>
-                                            <a href="/admin/user">Danh sách</a>
-                                        </div>
-                                    </form:form>
                                 </div>
-
                             </div>
                         </main>
                         <!-- footer -->
