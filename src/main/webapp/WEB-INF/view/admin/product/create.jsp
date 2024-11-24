@@ -62,25 +62,65 @@
                                                 enctype="multipart/form-data" modelAttribute="newProduct">
 
                                                 <div class="mb-3 col-12 col-md-6">
+
+                                                    <c:set var="errorsName">
+                                                        <form:errors cssClass="invalid-feedback" path="name" />
+                                                    </c:set>
+
                                                     <label class="form-label">Name: </label>
-                                                    <form:input type="text" class="form-control" path="name" />
+                                                    <form:input type="text"
+                                                        class="form-control ${not empty errorsName ? 'is-invalid' : ''}"
+                                                        path="name" />
+                                                    ${errorsName}
                                                 </div>
 
                                                 <div class="mb-3 col-12 col-md-6">
+
+                                                    <c:set var="errorsPrice">
+                                                        <form:errors path="price" cssClass="invalid-feedback" />
+                                                    </c:set>
+
                                                     <label class="form-label">Price: </label>
-                                                    <form:input type="number" class="form-control" path="price" />
+                                                    <form:input type="number"
+                                                        class="form-control ${not empty errorsPrice ? 'is-invalid' : ''}"
+                                                        path="price" />
+                                                    ${errorsPrice}
                                                 </div>
-                                                <div class="mb-3 col-12 col-md-6">
+                                                <div class="mb-3 col-12 ">
+
+                                                    <c:set var="errorsDetailDesc">
+                                                        <form:errors path="detailDesc" cssClass="invalid-feedback" />
+                                                    </c:set>
+
                                                     <label class="form-label">Detail description: </label>
-                                                    <form:input type="text" class="form-control" path="detailDesc" />
+                                                    <form:textarea type="text"
+                                                        class="form-control ${not empty errorsDetailDesc ? 'is-invalid' : ''}"
+                                                        path="detailDesc" row="3" />
+                                                    ${errorsDetailDesc}
                                                 </div>
                                                 <div class="mb-3 col-12 col-md-6">
+
+                                                    <c:set var="errorsShortDesc">
+                                                        <form:errors path="shortDesc" cssClass="invalid-feedback" />
+                                                    </c:set>
+
                                                     <label class="form-label">Short description: </label>
-                                                    <form:input type="text" class="form-control" path="shortDesc" />
+                                                    <form:input type="text"
+                                                        class="form-control ${not empty errorsShortDesc ? 'is-invalid' : ''}"
+                                                        path="shortDesc" />
+                                                    ${errorsShortDesc}
                                                 </div>
                                                 <div class="mb-3 col-12 col-md-6">
+
+                                                    <c:set var="errorsQuantity">
+                                                        <form:errors path="quantity" cssClass="invalid-feedback" />
+                                                    </c:set>
+
                                                     <label class="form-label">Quantity: </label>
-                                                    <form:input type="number" class="form-control" path="quantity" />
+                                                    <form:input type="number"
+                                                        class="form-control ${not empty errorsQuantity ? 'is-invalid' : ''}"
+                                                        path="quantity" />
+                                                    ${errorsQuantity}
                                                 </div>
                                                 <div class="mb-3 col-12 col-md-6">
                                                     <label class="form-label">Factory: </label>
@@ -110,12 +150,12 @@
                                                 <div class="mb-3 col-12 col-md-6">
                                                     <label class="form-label" for="avatarFile">Image: </label>
                                                     <input type="file" class="form-control" id="avatarFile"
-                                                        accept=".png, .jpg, .jpeg" name="avatarFile" />
+                                                        accept=".png, .jpg, .jpeg" name="dinhluongitFile" />
                                                 </div>
 
                                                 <div class="mb-3 col-12">
-                                                    <img style="display: none; max-height: 250px;" alt="avatar preview"
-                                                        id="avatarPreview">
+                                                    <img style="display: none; max-height: 250px;"
+                                                        alt="img Product preview" id="avatarPreview">
                                                 </div>
 
                                                 <div class="col-12 mb-5">

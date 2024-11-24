@@ -87,7 +87,7 @@ public class UserController {
         return "admin/user/show";
     }
 
-    @RequestMapping("/admin/user/{id}")
+    @GetMapping("/admin/user/{id}")
     public String getUserDetailPage(@PathVariable long id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user1", user);
@@ -96,7 +96,7 @@ public class UserController {
         return "admin/user/detail";
     }
 
-    @RequestMapping("/admin/user/update/{id}")
+    @GetMapping("/admin/user/update/{id}")
     public String getUpdateUserPage(@PathVariable long id, Model model) {
         User currentUser = userService.getUserById(id);
         model.addAttribute("newUser", currentUser);

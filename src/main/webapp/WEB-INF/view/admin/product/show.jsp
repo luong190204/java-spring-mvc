@@ -23,6 +23,7 @@
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
             </head>
+            <fmt:setLocale value="vi_VN" />
 
             <body class="sb-nav-fixed">
                 <!-- Header -->
@@ -63,7 +64,34 @@
                                                     </tr>
                                                 </thead>
 
+                                                <tbody>
+                                                    <c:forEach var="product" items="${products}">
+                                                        <tr>
+                                                            <th scope="row">${product.id}</th>
+                                                            <td>${product.name}</td>
+                                                            <td>${product.price}</td>
+                                                            <td>${product.factory}</td>
+                                                            <td>
+                                                                <a href="/admin/product/${product.id}"
+                                                                    class="btn btn-success">
+                                                                    View
+                                                                </a>
+                                                                <a href="/admin/product/update/${product.id}"
+                                                                    class="btn btn-warning">
+                                                                    Update
+                                                                </a>
+                                                                <a href="/admin/product/delete/${product.id}"
+                                                                    class="btn btn-danger">
+                                                                    Delete
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
+
                                             </table>
+
+
                                         </div>
                                     </div>
                                 </div>
