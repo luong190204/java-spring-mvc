@@ -83,4 +83,57 @@ public class ProductController {
         return "admin/product/detail";
     }
 
+    @GetMapping("admin/product/update/{id}")
+    public String getUpdateProductPage(@PathVariable long id, Model model) {
+        Product currentProduct = productService.getProductById(id);
+
+        model.addAttribute("newProduct", currentProduct);
+
+        return "admin/product/update";
+    }
+
+    @PostMapping("admin/product/update")
+    public String getUpdateProductPage(Model model, @ModelAttribute("newProduct") @Valid Product product,
+            BindingResult newBindingResult,
+            @RequestParam("dinhluongitFile") MultipartFile file) {
+
+        // Validate
+        if (newBindingResult.hasErrors()) {
+            return "admin/product/update";
+        }
+        //
+
+        Product currentProduct = productService.getProductById(product.getId());
+        if (currentProduct != null) {
+
+            if (!file.isEmpty()) {
+                String img = this.uploadService.handSaveUploadFile(file, "product");
+                currentProduct.setImage(img);
+            }
+
+            currentProduct.setName(product.getName());
+            currentProduct.setPrice(product.getPrice());
+            currentProduct.setDetailDesc(product.getDetailDesc());
+            currentProduct.setShortDesc(product.getShortDesc());
+            currentProduct.setQuantity(product.getQuantity());
+            currentProduct.setFactory(product.getFactory());
+
+            productService.handleSaveProduct(currentProduct);
+        }
+        return "redirect:/admin/product";
+    }
+
+    @GetMapping("admin/product/delete/{id}")
+    public String getDeleteProductPage(@PathVariable long id, Model model) {
+
+        model.addAttribute("id", id);
+        model.addAttribute("newProduct", new Product());
+        return "admin/product/delete";
+    }
+
+    @PostMapping("admin/product/delete")
+    public String getDeleteProductPage(Model model, @ModelAttribute("newProduct") Product product) {
+        this.productService.deleteById(product.getId());
+        return "redirect:/admin/product";
+    }
 }
