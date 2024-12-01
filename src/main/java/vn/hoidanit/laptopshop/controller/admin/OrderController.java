@@ -8,7 +8,7 @@ public class OrderController {
 
     @GetMapping("/admin/order")
     public String getPageOrder() {
-        return "/admin/order/show";
+        return "admin/order/show";
     }
 
 }

@@ -1,6 +1,5 @@
 package vn.hoidanit.laptopshop.controller.admin;
 
-import org.eclipse.tags.shaded.org.apache.regexp.recompile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +8,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,16 +34,6 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @RequestMapping("/")
-    public String getHomePage(Model model) {
-
-        List<User> arrUsers = userService.getAllUsersByEmail("dinhluong19002004@gmail.com");
-        System.out.println(arrUsers);
-        model.addAttribute("dinhluong", "test");
-        model.addAttribute("luong", "neu em la mot ang may trang");
-        return "index";
-    }
-
     @GetMapping("/admin/user/create") // GET
     public String getUserPage(Model model) {
         model.addAttribute("newUser", new User());
@@ -65,7 +53,7 @@ public class UserController {
         }
 
         if (newUserBindingResult.hasErrors()) {
-            return "/admin/user/create";
+            return "admin/user/create";
         }
         //
 

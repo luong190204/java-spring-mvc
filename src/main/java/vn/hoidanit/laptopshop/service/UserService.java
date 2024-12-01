@@ -1,6 +1,5 @@
 package vn.hoidanit.laptopshop.service;
 
-import org.eclipse.tags.shaded.org.apache.regexp.recompile;
 import org.springframework.stereotype.Service;
 
 import vn.hoidanit.laptopshop.domain.Role;
@@ -24,10 +23,6 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
-    }
-
-    public List<User> getAllUsersByEmail(String email) {
-        return userRepository.findByEmail(email);
     }
 
     public User getUserById(long id) {
@@ -54,5 +49,15 @@ public class UserService {
         user.setEmail(registerDTO.getEmail());
         user.setPassword(registerDTO.getPassword());
         return user;
+    }
+
+    // Check email exist
+    public boolean checkEmailExist(String email) {
+        return this.userRepository.existsByEmail(email);
+    }
+
+    // Lấy ra email của user để login
+    public User getByEmail(String email) {
+        return this.userRepository.findByEmail(email);
     }
 }

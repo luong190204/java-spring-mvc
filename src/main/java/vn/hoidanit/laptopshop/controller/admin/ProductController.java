@@ -35,7 +35,7 @@ public class ProductController {
     public String getPageProduct(Model model, Product product) {
         List<Product> products = productService.getAllProduct();
         model.addAttribute("products", products);
-        return "/admin/product/show";
+        return "admin/product/show";
     }
 
     @GetMapping("/admin/product/create") // GET

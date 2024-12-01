@@ -31,7 +31,7 @@ public class User {
     private String password;
 
     @NotNull
-    @Size(min = 6, message = "Fullname must be at least 4 characters")
+    @Size(min = 4, message = "Fullname must be at least 4 characters")
     private String fullname;
 
     private String address;
