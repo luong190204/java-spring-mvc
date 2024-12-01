@@ -13,7 +13,9 @@
         aria-describedby="btnNavbarSearch" />
     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
             class="fas fa-search"></i></button> -->
-                    <b style="color: azure;">Welcome, dinh luong It</b>
+                    <b style="color: azure;">
+                        <c:out value="${pageContext.request.userPrincipal.name}" />
+                    </b>
                 </div>
             </form>
             <!-- Navbar-->
@@ -27,7 +29,12 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li>
+                            <form action="/logout" method="post">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                                <button class="dropdown-item" href="#">Đăng xuất</button>
+                            </form>
+                        </li>
                     </ul>
                 </li>
             </ul>
