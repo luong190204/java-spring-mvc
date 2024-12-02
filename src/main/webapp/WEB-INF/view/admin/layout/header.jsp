@@ -14,7 +14,8 @@
     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
             class="fas fa-search"></i></button> -->
                     <b style="color: azure;">
-                        <c:out value="${pageContext.request.userPrincipal.name}" />
+                        Welcome,
+                        <c:out value="${sessionScope.fullName}" />
                     </b>
                 </div>
             </form>
