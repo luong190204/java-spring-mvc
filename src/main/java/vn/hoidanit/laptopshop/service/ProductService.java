@@ -101,8 +101,52 @@ public class ProductService {
         }
     }
 
+    // tìm giỏ hàng tương ứng với user
     public Cart fetchByUser(User user) {
         return this.cartRepository.findByUser(user);
+    }
+
+    // Xóa cart-detail
+    public void handleRemoveCartDetail(long cartDetailId, HttpSession session) {
+
+        // tìm kiếm một đối tượng CartDetail theo ID
+        Optional<CartDetail> cartOptional = this.cartDetailRepository.findById(cartDetailId);
+
+        if (cartOptional.isPresent()) {
+            // Kiểm tra cart-detail có tồn tại không => get cart-detail
+            CartDetail cartDetail = cartOptional.get();
+
+            // Lấy ra cart(giỏ hàng) thông qua cart-detail
+            Cart currentCart = cartDetail.getCart();
+
+            // Xóa cart-detail
+            this.cartDetailRepository.deleteById(cartDetailId);
+
+            //
+            if (currentCart.getSum() > 1) {
+                int s = currentCart.getSum() - 1;
+                currentCart.setSum(s);
+                session.setAttribute("sum", s);
+                this.cartRepository.save(currentCart);
+            } else {
+                // Xóa cart nếu sum(số lượng) product bằng 1
+                this.cartRepository.deleteById(currentCart.getId());
+                // Cập nhật số lượng trong session về 0, là không còn sản phẩm trong giỏ hàng.
+                session.setAttribute("sum", 0);
+            }
+        }
+
+    }
+
+    public void handleUpdateCartBeforeCheckout(List<CartDetail> cartDetails) {
+        for (CartDetail cartDetail : cartDetails) {
+            Optional<CartDetail> cdOptional = this.cartDetailRepository.findById(cartDetail.getId());
+            if (cdOptional.isPresent()) {
+                CartDetail currentDetail = cdOptional.get();
+                currentDetail.setQuantity(cartDetail.getQuantity());
+                this.cartDetailRepository.save(currentDetail);
+            }
+        }
     }
 
 }
