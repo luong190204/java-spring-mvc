@@ -95,7 +95,7 @@ public class ItemController {
         return "redirect:/cart";
     }
 
-    @PostMapping("/checkout")
+    @GetMapping("/checkout")
     public String getCheckOut(Model model, HttpServletRequest request) {
 
         User currentUser = new User(); // null

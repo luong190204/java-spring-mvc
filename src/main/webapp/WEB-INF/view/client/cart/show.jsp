@@ -220,7 +220,7 @@
                                                             </div>
 
 
-                                                            <form:form action="/checkout" method="post"
+                                                            <form:form action="/confirm-checkout" method="post"
                                                                 modelAttribute="cart">
                                                                 <input type="hidden" name="${_csrf.parameterName}"
                                                                     value="${_csrf.token}">
