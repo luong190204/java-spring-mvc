@@ -164,22 +164,33 @@ public class ProductService {
             String receiverName,
             String receiverAddress, String receiverPhone) {
 
-        // Create order
-        Order order = new Order();
-        order.setUser(user);
-        order.setReceiverName(receiverName);
-        order.setReceiverAddress(receiverAddress);
-        order.setReceiverPhone(receiverPhone);
-        order = this.oderRepository.save(order);
-
-        // Create orderDetail
-
         // Step 1: get cart by user
         Cart cart = this.cartRepository.findByUser(user);
         if (cart != null) {
+            // Lấy ra CartDetail
             List<CartDetail> cartDetails = cart.getCartDetails();
 
             if (cartDetails != null) {
+
+                // Create order
+                Order order = new Order();
+                order.setUser(user);
+                order.setReceiverName(receiverName);
+                order.setReceiverAddress(receiverAddress);
+                order.setReceiverPhone(receiverPhone);
+                order.setStatus("PENDING");
+
+                // Tính tổng tiền
+                double sum = 0;
+                for (CartDetail cd : cartDetails) {
+                    sum += cd.getPrice() * cd.getQuantity();
+                }
+
+                order.setTotalPrice(sum);
+
+                order = this.oderRepository.save(order);
+
+                // Create Order Detail
                 for (CartDetail cd : cartDetails) {
                     OrderDetail orderDetail = new OrderDetail();
                     orderDetail.setOrder(order);

@@ -27,7 +27,8 @@
                                         <div class="col-lg-7">
                                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                                 <div class="card-header">
-                                                    <h3 class="text-center font-weight-light my-4">Create Account</h3>
+                                                    <h3 class="text-center font-weight-light my-4">Đăng ký tài khoản
+                                                    </h3>
                                                 </div>
                                                 <div class="card-body">
                                                     <form:form method="post" action="/register"
@@ -51,7 +52,7 @@
                                                                         id="inputFirstName" type="text"
                                                                         placeholder="Enter your first name"
                                                                         path="firstName" />
-                                                                    <label for="inputFirstName">First name</label>
+                                                                    <label for="inputFirstName">Họ</label>
                                                                     ${errorsFirstName}
                                                                 </div>
                                                             </div>
@@ -60,7 +61,7 @@
                                                                     <form:input class="form-control " id="inputLastName"
                                                                         type="text" placeholder="Enter your last name"
                                                                         path="lastName" />
-                                                                    <label for="inputLastName">Last name</label>
+                                                                    <label for="inputLastName">Tên</label>
 
                                                                 </div>
                                                             </div>
@@ -70,7 +71,7 @@
                                                                 class="form-control ${not empty errorsEmail ? 'is-invalid' : ''}"
                                                                 id="inputEmail" type="email"
                                                                 placeholder="name@example.com" path="email" />
-                                                            <label for="inputEmail">Email address</label>
+                                                            <label for="inputEmail">Email</label>
                                                             ${errorsEmail}
                                                         </div>
                                                         <div class="row mb-3">
@@ -81,7 +82,7 @@
                                                                         id="inputPassword" type="password"
                                                                         placeholder="Create a password"
                                                                         path="password" />
-                                                                    <label>Password</label>
+                                                                    <label>Mật Khẩu</label>
                                                                     ${errorsPassword}
                                                                 </div>
                                                             </div>
@@ -91,23 +92,23 @@
                                                                         id="inputPasswordConfirm" type="password"
                                                                         placeholder="Confirm password"
                                                                         path="confirmPassword" />
-                                                                    <label for="inputPasswordConfirm">Confirm
-                                                                        Password</label>
+                                                                    <label for="inputPasswordConfirm">Nhập Lại Mật
+                                                                        Khẩu</label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="mt-4 mb-0">
                                                             <div class="d-grid">
                                                                 <button class="btn btn-primary btn-block">
-                                                                    Create Account
+                                                                    Đăng Ký
                                                                 </button>
                                                             </div>
                                                         </div>
                                                     </form:form>
                                                 </div>
                                                 <div class="card-footer text-center py-3">
-                                                    <div class="small"><a href="/login">Have an account? Go to
-                                                            login</a>
+                                                    <div class="small"><a href="/login">Bạn đã có tài khoản rồi? Đăng
+                                                            nhập</a>
                                                     </div>
                                                 </div>
                                             </div>

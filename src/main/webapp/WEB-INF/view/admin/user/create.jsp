@@ -54,7 +54,7 @@
                                 <div class="mt-5">
                                     <div class="row">
                                         <div class="col-12 col-md-6 mx-auto">
-                                            <h3 class="font-weight-bold mb-3"> Create a user </h3>
+                                            <h3 class="font-weight-bold mb-3"> Đăng ký tài khoản </h3>
                                             <hr />
                                             <form:form class="row" action="/admin/user/create" method="post"
                                                 modelAttribute="newUser" enctype="multipart/form-data">

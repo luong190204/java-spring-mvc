@@ -46,18 +46,18 @@
                                     <div class="row">
                                         <div class="col-12 mx-auto">
                                             <div class="d-flex justify-content-between">
-                                                <h3>Delete the product with id= ${id}</h3>
+                                                <h3>Delete the order with id= ${id}</h3>
 
                                             </div>
 
                                             <hr />
 
                                             <div class="alert alert-danger" role="alert">
-                                                Are you sure to delete this product?
+                                                Are you sure to delete this order?
                                             </div>
 
                                             <form:form method="post" modelAttribute="newOrder"
-                                                action="/admin/product/delete">
+                                                action="/admin/order/delete">
 
                                                 <div class="form-group" style="display: none;">
                                                     <label for="Inputuser1">Id</label>
