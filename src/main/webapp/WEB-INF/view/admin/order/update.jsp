@@ -81,7 +81,8 @@
                                                     <div class="form-group">
                                                         <p>Order id = ${id}</p>
                                                         <p>Price =
-                                                            <fmt:formatNumber type="number" value="${totalPrice}" /> đ
+                                                            <fmt:formatNumber type="number"
+                                                                value="${newOrder.totalPrice}" /> đ
                                                         </p>
                                                     </div>
 

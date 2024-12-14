@@ -38,20 +38,23 @@ public class OrderService {
 
     public void handleRemoveCartDetail(long id) {
 
+        // Step 1. Lấy ra đơn hàng của id tương ứng
         Optional<Order> orderOptional = this.orderRepository.findById(id);
 
+        // Step 2. Kiểm tra đơn hàng có trống không ? not null ->
         if (orderOptional.isPresent()) {
 
+            // Lấy ra thông tin của đơn hàng
             Order order = orderOptional.get();
 
             // lấy ra OrderDetail thông qua Order
             List<OrderDetail> orderDetails = order.getOrderDetails();
 
-            // lặp qua tất cả sản phẩm và tiến hành xóa
+            // lặp qua tất cả đơn hàng chi tiết và tiến hành xóa
             for (OrderDetail orderDetail : orderDetails) {
                 this.orderDetailRepository.deleteById(orderDetail.getId());
             }
-            // Xóa order
+            // Xóa Order sau khi xóa hết OrderDetail
             this.orderRepository.deleteById(id);
 
         }
