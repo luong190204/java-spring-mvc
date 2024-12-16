@@ -11,9 +11,9 @@
                                 class="text-white">dinhluong19002004@gmail.com</a></small>
                     </div>
                     <div class="top-link pe-2">
-                        <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+                        <a href="#" class="text-white"><small class="text-white mx-2">Chính sách bảo mật</small>/</a>
+                        <a href="#" class="text-white"><small class="text-white mx-2">Điều khoản sử dụng</small>/</a>
+                        <a href="#" class="text-white"><small class="text-white ms-2">Bán hàng và hoàn tiền</small></a>
                     </div>
                 </div>
             </div>
@@ -28,18 +28,18 @@
                     </button>
                     <div class="collapse navbar-collapse bg-white justify-content-between mx-5" id="navbarCollapse">
                         <div class="navbar-nav ">
-                            <a href="index.html" class="nav-item nav-link active">Trang Chủ</a>
-                            <a href="shop.html" class="nav-item nav-link">Sản Phẩm</a>
+                            <a href="/" class="nav-item nav-link active">Trang Chủ</a>
+                            <a href="/" class="nav-item nav-link">Sản Phẩm</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Trang</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="cart.html" class="dropdown-item">Cart</a>
-                                    <a href="chackout.html" class="dropdown-item">Chackout</a>
-                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                    <a href="404.html" class="dropdown-item">404 Page</a>
+                                    <a href="/cart" class="dropdown-item">Cart</a>
+                                    <a href="/" class="dropdown-item">Chackout</a>
+                                    <a href="/" class="dropdown-item">Testimonial</a>
+                                    <a href="/" class="dropdown-item">404 Page</a>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
+                            <a href="/" class="nav-item nav-link">Liên hệ</a>
                         </div>
                         <div class="d-flex m-3 me-0">
                             <!-- Nếu người dùng đã đăng nhập thì mới hiện đoạn code này lên -->
@@ -69,7 +69,8 @@
                                                 <c:out value="${sessionScope.fullName}" />
                                             </div>
                                         <li><a class="dropdown-item" href="#">Quản lý tài khoản</a></li>
-                                        <li><a class="dropdown-item" href="#">Lịch sử mua hàng</a></li>
+                                        <li><a class="dropdown-item" href="/order-history">Lịch sử mua hàng</a>
+                                        </li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
