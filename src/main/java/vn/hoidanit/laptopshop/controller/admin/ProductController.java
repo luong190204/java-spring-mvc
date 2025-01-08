@@ -39,11 +39,18 @@ public class ProductController {
             @RequestParam(name = "page", required = false, defaultValue = "1") int page) {
 
         // Pagination
-        Pageable pageable = PageRequest.of(page - 1, 3);
+        Pageable pageable = PageRequest.of(page - 1, 2);
 
         Page<Product> products = productService.getAllProduct(pageable);
         List<Product> pageProducts = products.getContent();
+
         model.addAttribute("products", pageProducts);
+
+        // Lấy ra trang hiện tại
+        model.addAttribute("currentPage", page);
+        // Lấy ra tổng số trang
+        model.addAttribute("totalPages", products.getTotalPages());
+
         return "admin/product/show";
     }
 
